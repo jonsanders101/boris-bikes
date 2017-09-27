@@ -7,9 +7,10 @@ describe DockingStation do
     subject.dock Bike.new
     expect(subject.release_bike).to be_instance_of Bike
   end
+  
   it 'has a method release_bike that returns a working bike' do
     subject.dock Bike.new
-    expect(subject.release_bike.working?).to eq true
+    expect(subject.release_bike.working).to eq true
   end
 
   it {is_expected.to respond_to :dock}
