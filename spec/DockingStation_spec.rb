@@ -36,7 +36,7 @@ describe DockingStation do
   end
 
   it 'raises an error if a user tries to dock a bike when there is already a bike' do
-    expect{21.times { subject.dock Bike.new }}.to raise_error('Docking station full')
+    expect{(subject.DEFAULT_CAPACITY + 1).times { subject.dock Bike.new }}.to raise_error('Docking station full')
   end
 
 end
