@@ -37,7 +37,17 @@ describe DockingStation do
   end
 
   it 'raises an error if a user tries to dock a bike when there is already a bike' do
-    expect{(subject.DEFAULT_CAPACITY + 1).times { subject.dock Bike.new }}.to raise_error('Docking station full')
+    expect{(subject.capacity + 1).times { subject.dock Bike.new }}.to raise_error('Docking station full')
+  end
+
+  it 'accepts a value for the maximum capacity of bikes' do
+    station = DockingStation.new(10)
+    expect(station.capacity).to eq 10
+  end
+
+  it 'defaults to a capacity of 20 if no other capacity is passed' do
+    #subject
+    expect(subject.capacity).to eq 20
   end
 
 end
