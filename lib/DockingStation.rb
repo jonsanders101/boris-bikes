@@ -5,10 +5,6 @@ class DockingStation
 
   attr_reader :docked_bike
 
-  def initialize
-    @docked_bike = Bike.new
-  end
-
   def release_bike
     raise 'No bike available' if !@docked_bike
     bike_to_return = @docked_bike
@@ -17,6 +13,7 @@ class DockingStation
   end
 
   def dock bike
+    raise 'Already a bike' if @docked_bike
     @docked_bike = bike
   end
 end

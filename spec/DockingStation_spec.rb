@@ -4,9 +4,11 @@ require 'Bike'
 describe DockingStation do
   it {is_expected.to respond_to :release_bike}
   it 'has a method release_bike that returns a bike' do
+    subject.dock Bike.new
     expect(subject.release_bike).to be_instance_of Bike
   end
   it 'has a method release_bike that returns a working bike' do
+    subject.dock Bike.new
     expect(subject.release_bike.working?).to eq true
   end
 
@@ -30,7 +32,11 @@ describe DockingStation do
   end
 
   it 'raises an error if a user tries to release a bike when there is no bike' do
-    subject.release_bike
     expect{subject.release_bike}.to raise_error('No bike available')
   end
+
+  it 'raises an error if a user tries to dock a bike when there is already a bike' do
+    expect{subject.dock}.to raise_error('Already a bike') if subject.docked_bike
+  end
+
 end
