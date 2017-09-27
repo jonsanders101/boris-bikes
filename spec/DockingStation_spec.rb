@@ -16,13 +16,13 @@ describe DockingStation do
 
   it 'has a method dock that accepts a bike' do
     subject.dock Bike.new
-    expect(subject.docked_bike).to be_instance_of Bike
+    expect(subject.docked_bikes[0]).to be_instance_of Bike
   end
 
   it 'enables users to check the bike that has been docked' do
     sample_bike = Bike.new
     subject.dock sample_bike
-    expect(subject.docked_bike).to eq sample_bike
+    expect(subject.docked_bikes[0]).to eq sample_bike
   end
 
   it 'enables users to release the bike that has been docked' do
@@ -36,7 +36,7 @@ describe DockingStation do
   end
 
   it 'raises an error if a user tries to dock a bike when there is already a bike' do
-    expect{subject.dock}.to raise_error('Already a bike') if subject.docked_bike
+    expect{21.times { subject.dock Bike.new }}.to raise_error('Docking station full')
   end
 
 end
