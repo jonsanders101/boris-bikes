@@ -1,3 +1,13 @@
+## Instructions for use
+
+[Add instructions here]
+
+## Authors
+
+This exercise was originally authored by coaches at Makers Academy, though the code included was written by myself and a handful of other students.
+
+This repo contains code written by me with four different pairing partners. Attributing work to these pairs cleanly is not easy as we all work on similar projects in parallel, then change pairs each day, picking elements of both coders' work from the previous days to continue.
+
 ## Domain Model
 
 This week, we were introduced to domain models and their role in building software in an object-oriented way. I will keep notes on the domain model as it changes throughout the project here.
