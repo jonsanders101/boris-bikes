@@ -52,7 +52,7 @@ describe DockingStation do
     end
 
     it 'defaults to a capacity of 20 if no other capacity is passed' do
-      expect(subject.capacity).to eq 20
+      expect(subject.capacity).to eq DockingStation::MAX_CAPACITY
     end
   end
 end
