@@ -1,3 +1,30 @@
+## Domain Model
+
+This week, we were introduced to domain models and their role in building software in an object-oriented way. I will keep notes on the domain model as it changes throughout the project here.
+
+*Nouns*
+
+Person
+Bike
+Bocking station
+
+*Verbs*
+
+use
+release a bike
+see if a bike is working
+
+Objects         | Messages
+-------------   | -------------
+Person          |
+Bike            | working?
+DockingStation  | release_bike
+
+Bike <-- working? --> true/false
+DockingStation <-- release_bike --> a Bike
+
+# Appendix
+
 # Boris Bikes Challenges
 
 London's [Boris Bikes](https://tfl.gov.uk/modes/cycling/santander-cycles) (well, 'Santander Cycles') are awesome. Anyone can hire out a bike and ride it around London.
