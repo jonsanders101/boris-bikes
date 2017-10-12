@@ -26,6 +26,6 @@ class DockingStation
   end
 
   def empty?
-    @docked_bikes.length == 0
+    @docked_bikes.empty?
   end
 end
