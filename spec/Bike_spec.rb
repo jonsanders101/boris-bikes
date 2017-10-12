@@ -8,5 +8,9 @@ describe Bike do
     expect(subject.working).to eq false
   end
 
-
+  describe '#report_broken' do
+    it "changes @working to false" do
+      expect{ subject.report_broken }.to change { subject.working }.from(true).to(false)
+    end
+  end
 end
