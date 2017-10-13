@@ -17,7 +17,7 @@ class DockingStation
     @docked_bikes.shift
   end
 
-  def dock (bike, working = true)
+  def dock(bike, working = true)
     raise 'Docking station full' if full?
     bike.report_broken unless working
     @docked_bikes << bike
