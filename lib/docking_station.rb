@@ -13,8 +13,6 @@ class DockingStation
   end
 
   def release_bike
-    p "Value of !first_working_bike"
-    p !first_working_bike
     raise 'No bike available' if empty? || !first_working_bike
     @docked_bikes.delete_at(first_working_bike)
   end

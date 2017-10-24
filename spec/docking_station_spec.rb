@@ -4,42 +4,43 @@ require 'bike'
 
 describe DockingStation do
 
-  let (:bike) { double(:bike, working: true, report_broken: nil) }
+  subject(:docking_station) { described_class.new }
+  let(:bike) { double(:bike, working: true, report_broken: nil) }
 
   it { is_expected.to respond_to :release_bike }
 
   describe '#release_bike' do
 
-    it 'has a method release_bike that returns a working bike' do
-      subject.dock bike
-      expect(subject.release_bike.working).to eq true
+    it 'releases a working bike' do
+      docking_station.dock bike
+      expect(docking_station.release_bike.working).to eq true
     end
 
     it 'enables users to release the bike that has been docked' do
       sample_bike = bike
-      subject.dock sample_bike
-      expect(subject.release_bike).to eq sample_bike
+      docking_station.dock sample_bike
+      expect(docking_station.release_bike).to eq sample_bike
     end
 
     it 'raises an error if a user tries to release a bike when there is no bike' do
-      expect { subject.release_bike }.to raise_error('No bike available')
+      expect { docking_station.release_bike }.to raise_error('No bike available')
     end
 
     it "won't release a broken bike" do
       allow(bike).to receive(:working) { false }
-      subject.dock(bike, false)
-      expect { subject.release_bike }.to raise_error('No bike available')
-      subject.release_bike
+      docking_station.dock(bike, false)
+      expect { docking_station.release_bike }.to raise_error('No bike available')
     end
   end
 
   describe '#dock' do
+
     it { is_expected.to respond_to :dock }
 
     it 'enables users to check the bike that has been docked' do
       sample_bike = bike
-      subject.dock sample_bike
-      expect(subject.docked_bikes[0]).to eq sample_bike
+      docking_station.dock sample_bike
+      expect(docking_station.docked_bikes[0]).to eq sample_bike
     end
 
     it 'reports bike as broken if passed "false"' do
@@ -50,7 +51,7 @@ describe DockingStation do
     end
 
     it 'raises an error if a user tries to dock a bike when there is already a bike' do
-      expect { (subject.capacity + 1).times { subject.dock bike } }.to raise_error('Docking station full')
+      expect { (docking_station.capacity + 1).times { docking_station.dock bike } }.to raise_error('Docking station full')
     end
   end
 
@@ -61,7 +62,7 @@ describe DockingStation do
     end
 
     it 'defaults to a capacity of 20 if no other capacity is passed' do
-      expect(subject.capacity).to eq DockingStation::MAX_CAPACITY
+      expect(docking_station.capacity).to eq DockingStation::MAX_CAPACITY
     end
   end
 end
