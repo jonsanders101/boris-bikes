@@ -13,8 +13,10 @@ class DockingStation
   end
 
   def release_bike
-    raise 'No bike available' if empty?
-    @docked_bikes.shift
+    p "Value of !first_working_bike"
+    p !first_working_bike
+    raise 'No bike available' if empty? || !first_working_bike
+    @docked_bikes.delete_at(first_working_bike)
   end
 
   def dock(bike, working = true)
@@ -31,5 +33,9 @@ class DockingStation
 
   def empty?
     @docked_bikes.empty?
+  end
+
+  def first_working_bike
+    docked_bikes.find_index { |bike| bike.working }
   end
 end

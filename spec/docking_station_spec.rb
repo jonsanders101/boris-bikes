@@ -4,7 +4,7 @@ require 'bike'
 
 describe DockingStation do
 
-  let (:bike) { double(:bike, working: true) }
+  let (:bike) { double(:bike, working: true, report_broken: nil) }
 
   it { is_expected.to respond_to :release_bike }
 
@@ -23,6 +23,13 @@ describe DockingStation do
 
     it 'raises an error if a user tries to release a bike when there is no bike' do
       expect { subject.release_bike }.to raise_error('No bike available')
+    end
+
+    it "won't release a broken bike" do
+      allow(bike).to receive(:working) { false }
+      subject.dock(bike, false)
+      expect { subject.release_bike }.to raise_error('No bike available')
+      subject.release_bike
     end
   end
 
