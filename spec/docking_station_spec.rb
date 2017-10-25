@@ -38,10 +38,8 @@ describe DockingStation do
     it { is_expected.to respond_to :dock }
 
     it 'reports bike as broken if passed "false"' do
-      bike = bike
-      dock = DockingStation.new
       expect(bike).to receive(:report_broken)
-      dock.dock(bike, false)
+      docking_station.dock(bike, false)
     end
 
     it 'raises an error if a user tries to dock a bike when there is already a bike' do
