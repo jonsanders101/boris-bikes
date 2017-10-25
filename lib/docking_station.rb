@@ -10,12 +10,12 @@ class DockingStation
   def dock(bike, working = true)
     raise 'Docking station full' if full?
     bike.report_broken unless working
-    @bikes << bike
+    bikes << bike
   end
 
   def release_bike
     raise 'No bike available' if empty? || !first_working_bike
-    @bikes.delete_at(first_working_bike)
+    bikes.delete_at(first_working_bike)
   end
-  
+
 end
