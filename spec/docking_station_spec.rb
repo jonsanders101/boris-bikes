@@ -40,7 +40,7 @@ describe DockingStation do
     it 'enables users to check the bike that has been docked' do
       sample_bike = bike
       docking_station.dock sample_bike
-      expect(docking_station.docked_bikes[0]).to eq sample_bike
+      expect(docking_station.bikes[0]).to eq sample_bike
     end
 
     it 'reports bike as broken if passed "false"' do
