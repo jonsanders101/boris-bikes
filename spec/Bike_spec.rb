@@ -5,9 +5,10 @@ describe Bike do
   subject(:bike) { described_class.new }
   it {is_expected.to respond_to :working}
 
-  it 'enables a user to report it as broken' do
-    subject.working = false
-    expect(subject.working).to eq false
+  describe'#new' do
+    it 'creates a new bike that is working by default' do
+      expect(bike.working).to eq true
+    end
   end
 
   describe '#report_broken' do
