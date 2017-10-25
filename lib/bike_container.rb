@@ -23,8 +23,4 @@ module BikeContainer
     bikes.empty?
   end
 
-  def first_working_bike
-    bikes.find_index { |bike| bike.working }
-  end
-
 end

@@ -18,4 +18,10 @@ class DockingStation
     bikes.delete_at(first_working_bike)
   end
 
+  private
+
+  def first_working_bike
+    bikes.find_index { |bike| bike.working }
+  end
+
 end
