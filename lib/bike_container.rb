@@ -2,22 +2,13 @@ require_relative 'bike'
 
 module BikeContainer
 
+  DEFAULT_CAPACITY = 20
+
   attr_reader :capacity, :docked_bikes
 
-  def initialize(capacity = MAX_CAPACITY)
+  def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
     @capacity = capacity
-  end
-
-  def dock(bike, working = true)
-    raise 'Docking station full' if full?
-    bike.report_broken unless working
-    @bikes << bike
-  end
-
-  def release_bike
-    raise 'No bike available' if empty? || !first_working_bike
-    @bikes.delete_at(first_working_bike)
   end
 
   private
